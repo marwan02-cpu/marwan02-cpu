@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Keep this site out of search engines -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B19G4QJ4G5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B19G4QJ4G5');
+    </script>
+
+    <title>Thesis: Power Consumption of VLMs on Edge AI | Marwan Shara</title>
+    <meta
+      name="description"
+      content="Full write-up: a from-scratch framework combining IoT-based, software-defined, and plug-based power meters to profile Vision-Language Model power draw on the Raspberry Pi 5."
+    />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <!-- ============================== NAV ============================== -->
+    <header class="nav" id="top">
+      <a class="nav__brand" href="index.html">
+        <span class="nav__prompt">~/</span>marwan<span class="nav__cursor">_</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#gaps">gaps</a>
+        <a href="#methods">methods</a>
+        <a href="#dataset">dataset</a>
+        <a href="#framework">framework</a>
+        <a href="#contact" class="nav__cta">contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ============================== HEADER ============================== -->
+      <section class="hero" id="hero" style="min-height: auto; padding: 90px 24px 50px;">
+        <a class="back-link reveal" href="index.html">&larr; back to overview</a>
+        <p class="hero__badge reveal" style="align-self: start;">
+          <span class="hero__badge-icon" aria-hidden="true">&#9733;</span>
+          Highest thesis mark in my school &amp; cohort
+        </p>
+        <h1 class="hero__title reveal" style="font-size: clamp(2rem, 6vw, 3.4rem); margin-top: 18px;">
+          Power Consumption of Operating Vision-Language Models on Edge&nbsp;AI Systems
+        </h1>
+        <p class="hero__hook reveal" style="max-width: 760px;">
+          During my undergraduate thesis, I built a profiling framework from the ground up to
+          measure how much power Vision-Language Models draw when run at the edge, and used
+          it to profile Gemma&nbsp;3 running on a Raspberry Pi&nbsp;5 via Ollama.
+        </p>
+      </section>
+
+      <!-- ============================== PROBLEM ============================== -->
+      <section class="section" id="problem" style="padding-top: 40px;">
+        <header class="section__head reveal">
+          <span class="section__index">01</span>
+          <h2 class="section__title">The problem</h2>
+        </header>
+        <div class="thesis reveal">
+          <p class="thesis__text" style="margin-top: 0;">
+            Language Models require a lot of compute and therefore consume significant power (W).
+            To help IoT developers build LLM-based applications on the edge, they need to know how
+            much power their workload will consume so that they can attach the correct battery.
+            The existing literature did not provide a framework to comprehensively capture power
+            consumption in a way that could be analyzed efficiently, so I decided to develop one
+            from scratch. Although the implementation targets the Raspberry Pi&nbsp;5 using Ollama,
+            the framework can be applied to <strong>any model, on any inference engine, on any
+            device</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================== GAPS ============================== -->
+      <section class="section" id="gaps">
+        <header class="section__head reveal">
+          <span class="section__index">02</span>
+          <h2 class="section__title">Gaps in the existing literature</h2>
+        </header>
+        <div class="thesis reveal">
+          <p class="thesis__lead" style="margin: -10px 0 4px;">
+            I started by identifying gaps in the existing literature, and found five.
+          </p>
+          <div class="gap-grid">
+            <article class="gap">
+              <h4>Lack of subsystem monitoring</h4>
+              <p>No visibility into which components (CPU, RAM) are consuming the most power, which is what helps answer where a workload&rsquo;s draw actually comes from.</p>
+            </article>
+            <article class="gap">
+              <h4>Lack of measurement accuracy</h4>
+              <p>No way to know whether the measurements from existing methods can actually be trusted.</p>
+            </article>
+            <article class="gap">
+              <h4>No custom sampling rate</h4>
+              <p>USB power meters are usually limited to a fixed rate set by the manufacturer, which pushed researchers toward visually recording power consumption, introducing significant human error.</p>
+            </article>
+            <article class="gap">
+              <h4>No cost-effective solution</h4>
+              <p>High-end meters with accurate, high sampling rates and real-time monitoring cost $600&ndash;$1,400, still can&rsquo;t monitor CPU/RAM, and require electrical engineering knowledge to operate.</p>
+            </article>
+            <article class="gap">
+              <h4>No real-time monitoring dashboard</h4>
+              <p>With many hardware and software components interacting, there was no visual way to catch problems early during experimentation.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== METHODS ============================== -->
+      <section class="section" id="methods">
+        <header class="section__head reveal">
+          <span class="section__index">03</span>
+          <h2 class="section__title">Three power meters, combined</h2>
+        </header>
+        <div class="thesis reveal">
+          <p class="thesis__lead" style="margin: -10px 0 4px;">
+            I selected and combined three measurement methods to address the gaps above.
+          </p>
+          <div class="thesis__methods">
+            <article class="method">
+              <h4>IoT-based power meter</h4>
+              <span class="method__cost">~$20 USD</span>
+              <p>Total power consumption of the device under test. Cost-effective, and exposes a WebSocket interface for real-time measurement.</p>
+            </article>
+            <article class="method">
+              <h4>Software-defined power meter</h4>
+              <span class="method__cost">Free &middot; built into the Pi 5</span>
+              <p>Measures the CPU, RAM, and other on-device components. Supports a custom sampling rate and real-time measurement by extracting values directly.</p>
+            </article>
+            <article class="method">
+              <h4>Plug-based power meter</h4>
+              <span class="method__cost">Verification</span>
+              <p>Used to verify the accuracy of the IoT-based power meter via its onboard display, confirming it isn&rsquo;t faulty.</p>
+            </article>
+          </div>
+          <p class="thesis__text">
+            This led to a profiling pipeline built from the ground up using all three techniques
+            for Ollama, giving researchers and IoT developers a way to analyze power consumption
+            both in real-time and after the fact.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================== IMPLEMENTATION ============================== -->
+      <section class="section" id="implementation">
+        <header class="section__head reveal">
+          <span class="section__index">04</span>
+          <h2 class="section__title">Implementation</h2>
+        </header>
+        <div class="thesis reveal">
+          <div class="impl">
+            <article class="impl__item">
+              <h4>Software-defined power meter: <code>vcgencmd</code></h4>
+              <p>
+                Built on the <code>vcgencmd</code> shell command, which is specifically designed
+                for the Pi&nbsp;5 to query power data directly from the GPU for components like the
+                CPU, RAM, Wi-Fi chipset, and system power lines. That data is raw and unusable for
+                analysis as-is, so I extracted the power values with regex and saved them to a CSV
+                file for analysis.
+              </p>
+            </article>
+            <article class="impl__item">
+              <h4>IoT-based power meter: Shelly Plug US Gen4</h4>
+              <p>
+                Captures the Pi 5&rsquo;s total power consumption. I configured a WebSocket
+                connection from my MacBook to retrieve power values in real time and store them in
+                a CSV file for later analysis, written in TypeScript.
+              </p>
+            </article>
+            <article class="impl__item">
+              <h4>Plug-based power meter: redundant verification</h4>
+              <p>
+                Used as a redundant method to verify the IoT-based meter&rsquo;s accuracy via its
+                onboard display, confirming it was operating correctly.
+              </p>
+            </article>
+            <article class="impl__item">
+              <h4>Running profiler and inference concurrently</h4>
+              <p>
+                Written in Python, using the <code>multiprocessing</code> and <code>subprocess</code>
+                libraries to run the profiler and the vision-language model inference simultaneously.
+                I primarily profiled Gemma&nbsp;3, but the profiler supports any open-source model
+                available on Ollama.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== DATASET ============================== -->
+      <section class="section" id="dataset">
+        <header class="section__head reveal">
+          <span class="section__index">05</span>
+          <h2 class="section__title">Building the dataset</h2>
+        </header>
+        <div class="thesis reveal">
+          <p class="thesis__text" style="margin-top: 0;">
+            One of the most complex challenges was obtaining high-quality, consistent data suitable
+            for profiling. The wide variation in quality and consistency across publicly available
+            datasets meant I had to create my own. I purchased the Raspberry Pi Camera Module&nbsp;3
+            and configured the Pi&nbsp;5 to capture images of a driveway segment in front of my
+            home, giving me full control over angle, quality, and frequency. I captured over
+            <strong>5,000 images</strong>, which introduces a wide range of features that can
+            influence power behavior and are important to document in the research.
+          </p>
+          <p class="thesis__text">
+            Labeling that many images quickly, under a tight deadline, was its own problem. I built
+            a custom labeler in Lovable and bound keyboard keys to labels so I could hold down keys
+            to label rapidly. To reduce human error, I disabled mutually exclusive options: for
+            example, labeling an image as daytime automatically disabled all nighttime-related
+            labels.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================== CHALLENGES ============================== -->
+      <section class="section" id="challenges">
+        <header class="section__head reveal">
+          <span class="section__index">06</span>
+          <h2 class="section__title">Synchronization &amp; monitoring</h2>
+        </header>
+        <div class="thesis reveal">
+          <div class="impl">
+            <article class="impl__item">
+              <h4>Syncing the IoT meter with the software-defined meter</h4>
+              <p>
+                Programmatically synchronizing the two power meters was essential for consistency
+                across the collected data. Without it, I&rsquo;d have had to manually start the IoT
+                meter from the command line and separately trigger the Python script, causing
+                timestamp misalignment. I solved this with an HTTP server on the Pi&nbsp;5 that
+                signals the IoT meter to begin measuring, keeping timestamps and values aligned.
+              </p>
+            </article>
+            <article class="impl__item">
+              <h4>Real-time monitoring dashboard</h4>
+              <p>
+                I configured a Prometheus server on my MacBook and Grafana Cloud to extract power
+                metrics for the Pi&nbsp;5&rsquo;s subsystems as well as total device power, enabling
+                real-time monitoring and early detection of anomalies during experimentation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== FRAMEWORK ============================== -->
+      <section class="section" id="framework">
+        <header class="section__head reveal">
+          <span class="section__index">07</span>
+          <h2 class="section__title">The framework, end to end</h2>
+        </header>
+        <div class="thesis reveal">
+          <ol class="thesis__steps">
+            <li>Collect the data that will be power profiled.</li>
+            <li>Choose an inference engine on the device under test.</li>
+            <li>Integrate and sync the DUT power profiler with the subsystem profiler.</li>
+            <li>Run the power profiling method based on the system: <code>nvidia-smi</code>, Intel RAPL, or <code>vcgencmd</code> on the Raspberry Pi 5.</li>
+            <li>Collect the data.</li>
+            <li>Structure the data, if it is unstructured.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============================== PDF ============================== -->
+      <section class="section" id="paper">
+        <header class="section__head reveal">
+          <span class="section__index">08</span>
+          <h2 class="section__title">Full thesis</h2>
+        </header>
+        <div class="thesis reveal">
+          <div class="pdf-card">
+            <span class="pdf-card__icon" aria-hidden="true">▤</span>
+            <div class="pdf-card__body">
+              <h4>Full thesis PDF</h4>
+              <p>Available on request.</p>
+            </div>
+            <a class="btn btn--primary" href="mailto:marwan02shara@gmail.com?subject=Thesis%20PDF%20request&amp;body=Hi%20Marwan%2C%20I%27d%20like%20a%20copy%20of%20your%20thesis%20PDF.">Request PDF &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== CONTACT ============================== -->
+      <section class="section section--contact" id="contact">
+        <div class="contact reveal">
+          <span class="section__index">09</span>
+          <h2 class="contact__title">Want to talk about it?</h2>
+          <p class="contact__lead">
+            Happy to walk through the framework, the dataset, or how it&rsquo;d generalize to your
+            device and model.
+          </p>
+          <a class="btn btn--primary btn--lg" href="mailto:marwan02shara@gmail.com?subject=Let%27s%20connect&amp;body=Hi%20Marwan%2C">Get in touch &rarr;</a>
+          <ul class="contact__links">
+            <li><a href="index.html">&larr; overview</a></li>
+            <li><a href="https://www.linkedin.com/in/marwan-shara-73ab541a8/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Marwan Shara</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

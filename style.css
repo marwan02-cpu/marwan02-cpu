@@ -1,5 +1,5 @@
 /* ============================================================
-   Marwan Shara — personal site
+   Marwan Shara - personal site
    Dark, techy, single-page. Plain CSS, no framework.
    ============================================================ */
 
@@ -300,7 +300,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 }
 .thesis__steps li {
   counter-increment: step; position: relative; padding-left: 42px;
-  color: var(--muted); min-height: 28px; display: flex; align-items: center;
+  color: var(--muted); min-height: 28px; padding-top: 4px;
 }
 .thesis__steps li::before {
   content: counter(step, decimal-leading-zero);
@@ -318,6 +318,44 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
   background: linear-gradient(180deg, var(--surface), var(--bg-soft));
 }
 .thesis__cta p { color: var(--text); font-weight: 500; flex: 1; min-width: 220px; }
+
+/* ----------------------------- thesis deep-dive (thesis.html) ----------------------------- */
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 0.85rem; color: var(--muted);
+  margin-bottom: 22px; transition: color .2s;
+}
+.back-link:hover { color: var(--accent); }
+
+.gap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.gap {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--surface), var(--bg-soft));
+  padding: 20px 22px; transition: border-color .25s, transform .25s;
+}
+.gap:hover { border-color: var(--accent); transform: translateY(-3px); }
+.gap h4 { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.gap h4::before { content: "▹"; color: var(--accent); }
+.gap p { color: var(--muted); font-size: 0.92rem; margin-top: 8px; line-height: 1.55; }
+
+.impl { display: grid; gap: 22px; }
+.impl__item {
+  padding: 22px 24px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--surface), var(--bg-soft));
+}
+.impl__item h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+.impl__item p { color: var(--muted); font-size: 0.98rem; line-height: 1.65; }
+.impl__item p + p { margin-top: 10px; }
+
+.pdf-card {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
+  padding: 26px 28px; border: 1px dashed rgba(94,234,212,0.35);
+  border-radius: var(--radius); background: var(--accent-dim);
+}
+.pdf-card__icon { font-family: var(--mono); font-size: 1.6rem; color: var(--accent); }
+.pdf-card__body { flex: 1; min-width: 220px; }
+.pdf-card__body h4 { font-size: 1.05rem; margin-bottom: 4px; }
+.pdf-card__body p { color: var(--muted); font-size: 0.92rem; }
 
 /* ----------------------------- projects ----------------------------- */
 .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }

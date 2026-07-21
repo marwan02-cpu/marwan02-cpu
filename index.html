@@ -18,18 +18,18 @@
       gtag('config', 'G-B19G4QJ4G5');
     </script>
 
-    <title>Marwan Shara | Software Engineer, Data &amp; AI</title>
+    <title>Power Consumption of Vision-Language Models on Edge AI | Marwan Shara</title>
     <meta
       name="description"
-      content="Software Engineer specializing in data & AI. Startup co-founder, shipped to 20,000+ users at enterprise scale, and built ETL pipelines processing tens of thousands of records."
+      content="An undergraduate thesis profiling the power consumption of Vision-Language Models on the Raspberry Pi 5: a framework combining IoT-based, software-defined, and plug-based power meters for real-time and offline analysis."
     />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Marwan Shara | Software Engineer, Data & AI" />
+    <meta property="og:title" content="Power Consumption of Vision-Language Models on Edge AI" />
     <meta
       property="og:description"
-      content="Startup co-founder · enterprise scale (20K+ users) · data engineering · LLM efficiency researcher."
+      content="A from-scratch framework for profiling LLM power draw on the Raspberry Pi 5, built to generalize to any model, inference engine, and device."
     />
     <meta property="og:image" content="assets/img/og.png" />
 
@@ -54,10 +54,9 @@
         <span class="nav__prompt">~/</span>marwan<span class="nav__cursor">_</span>
       </a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="#about">about</a>
-        <a href="#experience">experience</a>
-        <a href="#thesis">thesis</a>
-        <a href="#projects">projects</a>
+        <a href="#problem">problem</a>
+        <a href="#methods">methods</a>
+        <a href="thesis.html">full write-up</a>
         <a href="#contact" class="nav__cta">contact</a>
       </nav>
     </header>
@@ -66,152 +65,58 @@
       <!-- ============================== HERO ============================== -->
       <section class="hero" id="hero">
         <p class="hero__eyebrow reveal">
-          <span class="status-dot"></span> Available for new opportunities
+          <span class="status-dot"></span> Undergraduate thesis &middot; edge AI research
         </p>
         <h1 class="hero__title reveal">
-          Marwan Shara
+          Power Consumption of&nbsp;VLMs on&nbsp;Edge&nbsp;AI
         </h1>
         <p class="hero__role reveal">
-          <span class="type" data-type='["Software Engineer, Data & AI","Startup co-founder","Cloud Computing specialist","LLM Power Efficiency Researcher"]'></span>
+          <span class="type" data-type='["Raspberry Pi 5 + Ollama","IoT · software-defined · plug-based power meters","Real-time + offline profiling framework"]'></span>
         </p>
         <p class="hero__hook reveal">
-          <strong>Founder-engineer.</strong> I co-founded startups, scaling one to
-          <strong>$3.4 million in revenue</strong>, and take products <strong>0&rarr;1</strong>,
-          then brought that urgency to enterprise software for <strong>20,000+ users</strong>.
+          A framework I built from scratch to profile how much power
+          <strong>Vision-Language Models</strong> draw when run at the edge, so IoT
+          developers can size the right battery for their workload before they ship it.
         </p>
         <p class="hero__badge reveal">
           <span class="hero__badge-icon" aria-hidden="true">&#9733;</span>
-          Highest thesis mark in my school &amp; cohort &middot; LLM power at the edge
+          Highest thesis mark in my school &amp; cohort
         </p>
         <div class="hero__cta reveal">
-          <a class="btn btn--primary" href="#contact">Let&rsquo;s talk &rarr;</a>
-          <a class="btn btn--ghost" href="mailto:marwan02shara@gmail.com?subject=Resume%20request&amp;body=Hi%20Marwan%2C%20I%27d%20like%20a%20copy%20of%20your%20resume.">Request resume</a>
+          <a class="btn btn--primary" href="thesis.html">Read the full write-up &rarr;</a>
+          <a class="btn btn--ghost" href="mailto:marwan02shara@gmail.com?subject=Thesis%20PDF%20request&amp;body=Hi%20Marwan%2C%20I%27d%20like%20a%20copy%20of%20your%20thesis%20PDF.">Request PDF</a>
         </div>
         <dl class="hero__stats reveal">
-          <div><dt>$3.4M</dt><dd>revenue scaled</dd></div>
-          <div><dt>20K+</dt><dd>enterprise users</dd></div>
-
-          <div><dt>#1</dt><dd>AI/LLM thesis in cohort</dd></div>
+          <div><dt>#1</dt><dd>Highest mark achieved in cohort</dd></div>
+          <div><dt>3</dt><dd>power-measurement methods</dd></div>
+          <div><dt>5,000+</dt><dd>images self-collected</dd></div>
         </dl>
       </section>
 
-      <!-- ============================== ABOUT ============================== -->
-      <section class="section" id="about">
+      <!-- ============================== PROBLEM / SOLUTION ============================== -->
+      <section class="section" id="problem">
         <header class="section__head reveal">
           <span class="section__index">01</span>
-          <h2 class="section__title">The journey</h2>
-        </header>
-        <ol class="journey reveal">
-          <li class="journey__node">
-            <span class="journey__dot" aria-hidden="true"></span>
-            <p class="journey__label">Founder</p>
-            <p class="journey__text">Co-founded startups, scaling one to <strong>$3.4 million in revenue</strong> and shipping <strong>0&rarr;1</strong> to real users.</p>
-          </li>
-          <li class="journey__node">
-            <span class="journey__dot" aria-hidden="true"></span>
-            <p class="journey__label">Enterprise</p>
-            <p class="journey__text">Brought that founder urgency to <strong>enterprise software</strong>, shipping to <strong>20,000+ users</strong>.</p>
-          </li>
-          <li class="journey__node">
-            <span class="journey__dot" aria-hidden="true"></span>
-            <p class="journey__label">Researcher</p>
-            <p class="journey__text">Wrote the <strong>highest-marked thesis</strong> in my cohort, profiling <strong>LLM power at the edge</strong>.</p>
-          </li>
-        </ol>
-      </section>
-
-      <!-- ============================== EXPERIENCE ============================== -->
-      <section class="section" id="experience">
-        <header class="section__head reveal">
-          <span class="section__index">02</span>
-          <h2 class="section__title">Where I&rsquo;ve made impact</h2>
-        </header>
-
-        <ol class="timeline">
-          <li class="tl reveal">
-            <div class="tl__meta">
-              <span class="tl__date">May 2025 - Aug 2025</span>
-              <span class="tl__place">Guelph, ON</span>
-            </div>
-            <div class="tl__body">
-              <h3 class="tl__role">Software Developer Co-op</h3>
-              <p class="tl__org">OCAS</p>
-              <ul class="tl__points">
-                <li>Engineered an <strong>event-driven email notification system</strong> for <strong>20,000+ enterprise users</strong>.</li>
-              </ul>
-              <ul class="tags">
-                <li>.NET / C#</li><li>Blazor</li><li>Event-driven</li><li>Tailwind</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="tl reveal">
-            <div class="tl__meta">
-              <span class="tl__date">Jan 2022 - Mar 2023</span>
-              <span class="tl__place">Mississauga, ON</span>
-            </div>
-            <div class="tl__body">
-              <h3 class="tl__role">Co-Founder &amp; Software Engineer</h3>
-              <p class="tl__org">Cribify</p>
-              <ul class="tl__points">
-                <li>Acquired early adopters from staff at <strong>Western University</strong>, a <strong>top-1%-worldwide</strong> research institution with <strong>43,000+ students</strong> and <strong>$240M+ in annual research funding</strong>.</li>
-              </ul>
-              <ul class="tags">
-                <li>TypeScript</li><li>Node.js</li><li>Firestore</li><li>0→1</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="tl reveal">
-            <div class="tl__meta">
-              <span class="tl__date">Jun 2021 - Aug 2021</span>
-              <span class="tl__place">Washington, D.C.</span>
-            </div>
-            <div class="tl__body">
-              <h3 class="tl__role">Data Engineer Intern</h3>
-              <p class="tl__org">Georgetown University Medical Center</p>
-              <ul class="tl__points">
-                <li>Built a <strong>Cloud Dataflow ETL pipeline</strong> (Python, SQL, BigQuery) migrating <strong>tens of thousands of patient records</strong> into REDCap, saving clinical staff <strong>10 hrs/week</strong> and improving data reliability.</li>
-              </ul>
-              <ul class="tags">
-                <li>BigQuery</li><li>Dataflow</li><li>Python</li><li>SQL</li>
-              </ul>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <!-- ============================== THESIS ============================== -->
-      <section class="section" id="thesis">
-        <header class="section__head reveal">
-          <span class="section__index">03</span>
-          <h2 class="section__title">Research: LLMs at the edge</h2>
+          <h2 class="section__title">Why this thesis exists</h2>
         </header>
         <div class="thesis reveal">
-          <p class="thesis__award">
-            <span class="thesis__award-icon" aria-hidden="true">★</span>
-            Awarded the <strong>highest thesis mark in my school and cohort</strong>
-          </p>
-
-          <p class="thesis__lead">
-            <strong>Power Consumption of Operating Vision-Language Models on Edge AI Systems.</strong>
-          </p>
-
           <div class="thesis__flow">
             <article class="thesis__card">
               <h3 class="thesis__card-label">Problem</h3>
               <p>
                 Vision-Language Models are compute-hungry and draw significant power, so IoT
                 developers running them on the edge need to know their workload&rsquo;s draw to
-                size the right battery.
+                size the right battery, and the existing literature had no framework to
+                comprehensively capture that power in a way that could be analyzed efficiently.
               </p>
             </article>
             <span class="thesis__arrow" aria-hidden="true">&rarr;</span>
             <article class="thesis__card">
               <h3 class="thesis__card-label">Solution</h3>
               <p>
-                I built a framework from scratch that profiles a model&rsquo;s power consumption
-                on the edge, designed to generalize to
+                I built a profiling framework from scratch, targeting the
+                <strong>Raspberry Pi 5</strong> running <strong>Ollama</strong> for the
+                implementation, but designed to generalize to
                 <strong>any model, inference engine, and device</strong>.
               </p>
             </article>
@@ -222,77 +127,57 @@
             <li>Raspberry Pi 5</li><li>Ollama</li><li>Gemma 3</li><li>Python</li>
             <li>TypeScript</li><li>Prometheus</li><li>Grafana</li><li>vcgencmd</li>
           </ul>
-
-          <div class="thesis__cta">
-            <p>Want the full framework, methodology, and findings?</p>
-            <a class="btn btn--primary" href="mailto:marwan02shara@gmail.com?subject=Thesis%20access%20request&amp;body=Hi%20Marwan%2C%20I%27d%20like%20to%20get%20access%20to%20your%20thesis%20on%20profiling%20power%20consumption%20of%20Vision-Language%20Models%20on%20the%20edge.">
-              Request thesis access &rarr;
-            </a>
-          </div>
         </div>
       </section>
 
-      <!-- ============================== PROJECTS ============================== -->
-      <section class="section" id="projects">
+      <!-- ============================== METHODS ============================== -->
+      <section class="section" id="methods">
         <header class="section__head reveal">
-          <span class="section__index">04</span>
-          <h2 class="section__title">Selected projects</h2>
+          <span class="section__index">02</span>
+          <h2 class="section__title">Three power meters, combined</h2>
         </header>
-        <div class="projects">
-          <!-- TODO(marwan): add real tags & links for each project. -->
-          <article class="card reveal">
-            <div class="card__top">
-              <h3 class="card__title">AI Resume Assistant</h3>
-              <span class="card__icon">›_</span>
-            </div>
-            <p class="card__desc">Takes the tedious pain out of tailoring resumes to job descriptions by pairing AI with a clean UI that simplifies the whole process.</p>
-            <ul class="tags"><li>AI</li><li>LLM</li><li>Python</li><li>AWS</li><li>React</li></ul>
-            <div class="card__links">
-              <a href="https://github.com/marwan02-cpu/ai-resume-assistant" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__top">
-              <h3 class="card__title">LLM Power Profiler</h3>
-              <span class="card__icon">›_</span>
-            </div>
-            <p class="card__desc">Measures a Raspberry Pi 5&rsquo;s power draw while it runs a local multimodal LLM (Gemma 3 via Ollama) over a set of images. Samples the on-board PMIC rails at ~14 Hz, logs token throughput and time-to-first-token, and exposes live metrics to Prometheus.</p>
-            <ul class="tags"><li>LLM</li><li>Edge AI</li><li>Raspberry Pi</li><li>Ollama</li><li>Prometheus</li><li>Python</li></ul>
-            <div class="card__links">
-              <a href="https://github.com/marwan02-cpu/llm-power-rpi5" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card__top">
-              <h3 class="card__title">AI News Recommender &amp; Analyser</h3>
-              <span class="card__status">In progress</span>
-            </div>
-            <p class="card__desc">An AI-based system that recommends and analyses news, surfacing the stories that matter and breaking down what they mean.</p>
-            <ul class="tags"><li>AI</li><li>NLP</li></ul>
-            <div class="card__links">
-              <a href="#">Code ↗</a>
-            </div>
-          </article>
+        <div class="thesis reveal">
+          <p class="thesis__lead">
+            No single existing method covered subsystem-level detail, measurement accuracy, a
+            custom sampling rate, and cost all at once, so the framework combines three.
+          </p>
+          <div class="thesis__methods">
+            <article class="method">
+              <h4>IoT-based power meter</h4>
+              <span class="method__cost">~$20 USD</span>
+              <p>Total device power draw, with a WebSocket interface for real-time measurement.</p>
+            </article>
+            <article class="method">
+              <h4>Software-defined power meter</h4>
+              <span class="method__cost">Free &middot; built into the Pi 5</span>
+              <p>CPU, RAM, and subsystem power via <code>vcgencmd</code>, at a custom sampling rate.</p>
+            </article>
+            <article class="method">
+              <h4>Plug-based power meter</h4>
+              <span class="method__cost">Verification</span>
+              <p>An onboard-display meter used to confirm the IoT meter isn&rsquo;t faulty.</p>
+            </article>
+          </div>
+          <div class="thesis__cta">
+            <p>Full methodology, gaps in prior work, dataset collection, and findings:</p>
+            <a class="btn btn--primary" href="thesis.html">Read the full write-up &rarr;</a>
+          </div>
         </div>
       </section>
 
       <!-- ============================== CONTACT ============================== -->
       <section class="section section--contact" id="contact">
         <div class="contact reveal">
-          <span class="section__index">05</span>
-          <h2 class="contact__title">Don&rsquo;t let this one get away.</h2>
+          <span class="section__index">03</span>
+          <h2 class="contact__title">Want to talk about it?</h2>
           <p class="contact__lead">
-            Founder&rsquo;s drive, enterprise scale, and research depth in one engineer.
-            If you&rsquo;re building something ambitious, let&rsquo;s talk before someone else does.
+            Happy to walk through the framework, the dataset, or how it&rsquo;d generalize to
+            your device and model.
           </p>
           <a class="btn btn--primary btn--lg" href="mailto:marwan02shara@gmail.com?subject=Let%27s%20connect&amp;body=Hi%20Marwan%2C">Get in touch &rarr;</a>
           <ul class="contact__links">
-            <!-- TODO(marwan): add your real GitHub & LinkedIn URLs -->
-            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a></li>
             <li><a href="https://www.linkedin.com/in/marwan-shara-73ab541a8/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-            <li><a href="mailto:marwan02shara@gmail.com?subject=Resume%20request&amp;body=Hi%20Marwan%2C%20I%27d%20like%20a%20copy%20of%20your%20resume.">Request resume ↗</a></li>
+            <li><a href="mailto:marwan02shara@gmail.com?subject=Thesis%20PDF%20request&amp;body=Hi%20Marwan%2C%20I%27d%20like%20a%20copy%20of%20your%20thesis%20PDF.">Request PDF ↗</a></li>
           </ul>
         </div>
       </section>

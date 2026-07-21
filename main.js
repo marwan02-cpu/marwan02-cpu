@@ -1,5 +1,5 @@
 /* ============================================================
-   Marwan Shara — site interactions
+   Marwan Shara - site interactions
    - reveal-on-scroll (IntersectionObserver)
    - nav border on scroll
    - hero typing effect
